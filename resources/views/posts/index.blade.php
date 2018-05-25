@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+
+    @include('posts._messages')
+
     <div class="row">
         <div class="col-md-10">
             <h1>All Posts</h1>
@@ -31,7 +34,7 @@
                     @foreach ($posts as $post)
 
                         <tr>
-                            <th>{{ $post->id }}</th>
+                            <th>{{ $loop->iteration }}</th>
                             <td>{{ $post->title }}</td>
                             <td>{{ substr(strip_tags($post->content), 0, 50) }}{{ strlen(strip_tags($post->content)) > 50 ? "..." : "" }}</td>
                             <td>{{ date('M j, Y', strtotime($post->created_at)) }}</td>
